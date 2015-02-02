@@ -1,0 +1,45 @@
+#--------------------------------------------------------------------
+#-- Name:	Dominic Celiano
+#-- Date:	1/28/15
+#-- Course:	ECE281
+#-- File:	ECE281_Lab1 user constraints file
+#-- HW: Lab 1
+#--
+#-- Purp:	Define the user constraints so the inputs and outputs and be mapped onto the FPGA
+#--
+#-- Documentation:	None
+#--
+#-- Academic Integrity Statement: I certify that, while others may have 
+#-- assisted me in brain storming, debugging and validating this program, 
+#-- the program itself is my own work. I understand that submitting code 
+#-- which is the work of other individuals is a violation of the honor   
+#-- code.  I also understand that if I knowingly give my original work to 
+#-- another individual is also a violation of the honor code. 
+#------------------------------------------------------------------------- 
+
+# 7-segment display segments
+NET "sseg_a" LOC = "L18";
+NET "sseg_b" LOC = "F18";
+NET "sseg_c" LOC = "D17";
+NET "sseg_d" LOC = "D16";
+NET "sseg_e" LOC = "G14";
+NET "sseg_f" LOC = "J17";
+NET "sseg_g" LOC = "H14";
+
+# 7-segment display active-low enable
+NET "an0" LOC = "F17";
+NET "an1" LOC = "H17";
+NET "an2" LOC = "C18";
+NET "an3" LOC = "F15";
+
+# Switches
+NET "sw0" LOC = "G18";
+NET "sw1" LOC = "H18";
+NET "sw2" LOC = "K18";
+NET "sw3" LOC = "K17";
+
+# Buttons
+NET "btn0" LOC = "B18";
+NET "btn1" LOC = "D18";
+NET "btn2" LOC = "E18";
+NET "btn3" LOC = "H13";
