@@ -1,0 +1,47 @@
+#Ignore everything
+*
+
+# Except for the following items
+!.gitignore
+
+
+# Add back in the lecture directory and then exclude evertyhing in it and
+# then add back in the files that we are interested in 
+
+!CE2
+CE2/*
+!CE2/*.vhdl
+!CE2/*.vhd
+!CE2/*.bit
+!CE2/*.ucf
+!CE2/*.wcfg
+!CE2/*.sch
+!CE2/*.txt
+!CE2/*.png
+
+!Lab2
+Lab2/*
+!Lab2/*.vhdl
+!Lab2/*.vhd
+!Lab2/*.bit
+!Lab2/*.ucf
+!Lab2/*.wcfg
+!Lab2/*.sch
+!Lab2/*.txt
+!Lab2/*.pdf
+!Lab2/*.md
+!Lab2/Lab2Pics/*.png
+!Lab2/Lab2Pics/*.gif
+!Lab2/Lab2Pics/*.jpg
+# Et cetera.  Be sure to list all the file types you may want to use.  
+
+# This file keeps you from uploading junk to GitLab or from seeing a bunch of junk in your
+# gitbash window.  However, you need to make sure your folders and your files that you do 
+# want to upload are included here.  For example, you'll want to add "!CPX2" just like the 
+# lab examples above.  If you want to include .jpg files, add them just like the .vhd
+# files.  Google can be your friend if you want to learn how this works better.
+
+# Note, this file must match your naming conventions.  If you call your folder Alien_Lab2,
+# you'll need to type "!Alien_Lab2", etc.  
+
+# Come back and modify this file as you see fit.
