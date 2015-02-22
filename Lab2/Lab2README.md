@@ -10,35 +10,54 @@ As can be seen in Figure 1, the player starts out in the Cave of Cacophony when 
 ![Sword Diagram](lab2pics/SwordDiagram.JPG)
 ###### FIGURE 2 - THE STATE TRANSITION DIAGRAM FOR THE SWORD FSM. IF THE PLAYER DOES NOT HAVE THE SWORD, BUT IS LOOKING FOR THE SWORD AND THE MACHINE IS NOT RESET, THE PLAYER WILL GET THE VORPAL SWORD.
 If the reset input is received at any time, the game will be reset. The player will go back to the Cave of Cacophony and will no longer have the sword. This is typically done after the player dies or wins.
+
 In this lab, the two FSM's were created and communicated with each other to implement this adventure game.
 
 ## Preliminary design and diagrams
 The first thing that was done was to draw all of the arrows on the state transition diagram. This can be seen in Figures 1 and 2. The rooms were also labeled in the room diagram (i.e. Cave of Cacophony is S0). However, not all of the arrows drawn were implemented. Since the user is assumed to input a valid direction that will move them into a different room, other directions such as north, west, or south when in room S0 were not accounted for. This made the overall design a little simpler. We also assumed that only one direction could be input at a time.
+
 From these assumptions and the State Transition Diagram, the room FSM was tackled first. The next state table for the room FSM was drawn out, only accounting for the states necessary, given the assumptions made. For example, if the current state was S0 and the user input E and R', the player moved onto S1. This table can be seen in Figure 3. But once the Next State table had been drawn, the inputs and outputs had to be encoded. Since there were seven different states, I decided to encode them using 3 bits. That encoding can also be seen in Figure 3, along with the next state table based on the encodings.
 
 ![Room Next State Table](lab2pics/RoomTable1.JPG)
 ###### FIGURE 3 - NEXT STATE TABLES FOR THE ROOM FSM - THERE ARE MANY DON'T CARES (X) BECAUSE OF THE ASSUMPTIONS WE HAVE MADE. THE TOP TABLE SHOWS HOW THE CURRENT STATE AND INPUTS CORRESPOND TO THE NEXT STATE. THE MIDDLE TABLE THEN ENCODES THE CURRENT STATE AND NEXT STATE VARIABLES. THE BOTTOM TABLE SHOWS THE TOP TABLE REDRAWN WITH THE ENCODINGS.
 After the Next State Table was drawn, the next state equations were written using the binary encodings. The original equations as well as the simplifications using boolean algebra are:
+
 S2* = R’(S2’S1S0’E + S2S1’S0’V + S2S1’S0’V’) = R’(S2’S1S0’E + S2S1’S0’(V + V’))
+
 S2* = R’S2’S1S0’E + R’S2S1’S0’
+
 S1* = R’(S2’S1’S0S + S2’S1S0’W + S2’S1S0E + S2S1’S0’V’)
+
 S0* = R’(S2’S1’S0’E + S2’S1S0’N + S2’S1S0’W + S2S1’S0’V)
+
 S0* = R’S0’(S2’S1’E + S2’S1N + S2’S1W + S2S1’V)
+
 These were the equations that would eventually be implemented using a schematic. But before that could be done, the output table for the room FSM was made using the binary encodings as the current state. This table can be seen in Figure 4. The outputs d, win, or sw were based on what was specified by the game's rules. The outputs S0 - S6 were just a reiteration of the encodings given in Figure 3.
 
 ![Room Output Table](lab2pics/RoomTable2.JPG)
 ###### FIGURE 4 - OUTPUT TABLE FOR THE ROOM FSM - THE CURRENT STATE DETERMINES THE RESULT OF EACH OF THE 10 OUTPUTS OF THE ROOM FSM.
 After the output table was created, the 10 output equations were determined.
+
 sw = S2’S1S0
+
 win = S2S1’S0
+
 d = S2S1S0’
+
 S0 = S2’S1’S0’
+
 S1 = S2’S1’S0
+
 S2 = S2’S1S0’
+
 S3 = S2’S1S0
+
 S4 = S2S1’S0’
+
 S5 = S2S1’S0
+
 S6 = S2S1S0’
+
 Since the output and next state equations were now determined, the schematic for the room FSM was able to be drawn. Since there were three next state equations, three flip flops (fd in the Xilinx library) had to be used. The necessary 'and' and 'or' gates were then used to draw the schematic for the room FSM. A zoomed out view of the final product can be seen in Figure 5.
 
 ![Room FSM Zoomed](lab2pics/Room1.JPG)
@@ -50,12 +69,15 @@ The inputs for the room FSM can be seen in Figure 6.
 The outputs and the output logic for the room FSM can be seen in Figure 7.
 
 ![Room FSM Output 1](lab2pics/Room3.JPG)
+
 ![Room FSM Output 2](lab2pics/Room2.JPG)
 ###### FIGURE 7 - OUTPUTS AND OUTPUT LOGIC FOR ROOM FSM - THE TOP PICTURE SHOWS THE OUTPUT LOGIC FOR D, WIN, AND SW, WHILE THE BOTTOM PICTURE SHOWS THE OUTPUT LOGIC FOR THE STATES S0-S6. THE OUTPUT LOGIC WAS BASED ON THE OUTPUT EQUATIONS FROM THE TABLE.
 Each of the three flip-flops, for the next state equations S0-S2, with their next state logic can be seen in Figure 8.
 
 ![Room FSM S0](lab2pics/RoomS0.JPG)
+
 ![Room FSM S1](lab2pics/RoomS1.JPG)
+
 ![Room FSM S2](lab2pics/RoomS2.JPG)
 ###### FIGURE 8 - FLIP FLOPS USED TO IMPLEMENT THE NEXT STATE EQUATIONS (SEEN ABOVE). THE TOP PICTURE IS S0, MIDDLE IS S1, AND BOTTOM IS S2. THE NEXT STATE LOGIC GOING INTO EACH OF THESE FLIP FLOPS IS DERIVED FROM THE NEXT STATE EQUATIONS ABOVE. THE OUTPUTS OF THE FLIP FLOPS ARE MANY TIMES DRAWN BACK INTO THE NEXT STATE EQUATIONS, AS THIS IS A SYNCHRONOUS CIRCUIT.
 Many times, when designing this Room FSM, it became difficult to manage which wires were going where. Therefore, it was useful to label the wires with their state so it was easy to keep track of the inputs to certain gates. In Figure 9, the inputs into an and3 gate can be seen as matching up with the next state equation for S0.
@@ -71,11 +93,13 @@ Since the next state and output equations for the sword FSM were now determined,
 ![Sword FSM](lab2pics/Sword.JPG)
 ###### FIGURE 11 - A PICTURE OF THE SWORD FSM - THE INPUTS CAN BE SEEN ON THE LEFT, AND THE OUTPUTS ON THE RIGHT. ONLY ONE FLIP-FLOP WAS NECESSARY BECAUSE THERE WAS ONLY ONE NEXT STATE EQUATION.
 As can be seen in the Sword FSM picture, the 3 inputs of clock, sw, and reset determined the output of v (i.e. whether or not we had the Vorpal sword). The clock was input into the D Flip-Flop, and the next state and output equations shown in Figure 10 were used to determine the rest of the logic necessary for the schematic.
+
 After both the room FSM and sword FSM were created, the Top-Level diagram was created to implement the adventure game as a whole. Each of the separate FSM's were saved as schematics and dragged into the top-level diagram seen in Figure 12.
 
 ![Top Diagram](lab2pics/Top.JPG)
 ###### FIGURE 12 - THE TOP LEVEL DIAGRAM TO IMPLEMENT THE ADVENTURE GAME. THE SW OUTPUT FROM THE ROOM FSM IS INPUT INTO THE SWORD FSM, WHILE THE V OUTPUT FROM THE SWORD FSM IS INPUT INTO THE V INPUT FOR THE SWORD FSM.
 As can be seen in the figure, the inputs/outputs sw and v are tied together in such a way that the two FSM's interact with each other to implement the adventure game properly. The inputs to the system are N, E, S, W, Reset, and the Clock, while the outputs dead and win are extremely important to us - S0 through S6 just tell us what room we are in.
+
 After the top-level design was implemented, it was time to test it along with the room and sword FSM's.
 
 ## Testing procedures and data collected
@@ -161,6 +185,7 @@ Now that I knew the top-level design was working properly, I knew the design had
 
 ## Debugging discussion
 Since I was extremely careful when laying out my wires while I was designing my FSM's, I did not run into many problems with my actual schematics. There was one point where I misread a 'sw' for a 'sw not' when creating my sword FSM, but I was able to quickly solve that problem.
+
 One of the major issues I ran into, however, occurred when I was trying to run my testbench files. I kept getting an unusual 'Error 707' from the Xilinx compiler, which I later Googled to find out that my file names for my testbench files was too long. This problem frustrated me for quite some time, and I was sort of angry to find out it was such a simple fix. Since I am told to make my file names super long (i.e. ECE281_Celiano_SwordFSM_tb) and that causes errors with the Xilinx software, maybe something should be mentioned about that so that we know how to fix our problems by shortening our file names.
 
 ## Answers to Lab Questions
@@ -168,10 +193,14 @@ None except the Pre-lab, which can be seen above in Figure 1.
 
 ## Observations and Conclusions
 Overall, this lab was a good way to learn more about the specifics of designing finite state machines. Designing a complicated FSM such as the room FSM proved to be quite a challenge, but also reinforced the processes necessary to go through when doing so. Creating the tables, writing the equations, and doing the encoding, all while being extremely careful was tedious, but important to getting the overall system working. And once I was able to draw a schematic and actually see my design work properly, the results were quite satisfying.
+
 Yet the part of this lab that by far took the longest time was designing the schematic. I did all of the thinking when I was writing out my tables and equations, but then drawing the schematic proved to be more time-consuming than anything. I did not learn very much by doing so. Maybe this will be a good introduction into VHDL, which we are doing next block, to motivate me to not have to draw the schematic out and instead code it using a hardware definition language.
+
 Testing and debugging this lab proved to be one of the most valuable parts of the experience. While we were not able to implement our design into actual hardware because of limitations of the clock on the Nexys2, creating testbench files and looking at the results of the simulation taught me a lot about figuring out what was wrong and why. I also learned that just because something in my simulation didn't turn out as I expected, the problem was not necessarily in my schematic - it could have just been in my testbench file. Every single time I went back to fix my simulation, I did so using my testbench - only once did I actually have to change something in the schematic of my Sword FSM.
+
 This lab was extremely time consuming but also taught me a lot. I also got a lot more familiar with the Xilinx environment.
 
 ## Documentation statement
 C3C Laverick helped me understand that when I wrote my testbench, I needed to reset certain values to '0' for testing the room FSM.
+
 Capt Falkinburg helped my shorten my file names to fix the error I was getting.
