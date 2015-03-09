@@ -2,10 +2,12 @@
 -- Course: ECE 281 - Section T3
 -- Engineer: Dominic Celiano
 -- 
--- Create Date:    09:20:31 03/09/2015 
--- Design Name: Chapter 4, Exercise 3
--- Module Name:    Exer_3 - Behavioral 
--- Description: An HDL module that computes a 4-input XOR function. The input is a3:0 and the output is y.
+-- Create Date:    11:02:32 03/09/2015 
+-- Design Name: Chapter 4, Exercise 27
+-- Module Name:    Exer_27 - Behavioral 
+-- Description: An HDL module to implement a JK flip-flop. Inputs clk, J, and K decide the output Q.
+-- On the rising edge of the clock, Q keeps its old value if J=K=0. It sets Q to 1 if J=1, resets Q
+-- to 0 if K=1, and inverts Q if J=K=1.
 --
 -- Revision: 
 -- Revision 0.01 - File Created
@@ -23,15 +25,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Exer_3 is
-    Port ( a : in  STD_LOGIC_VECTOR(3 downto 0);
-           y : out  STD_LOGIC);
-end Exer_3;
+entity Exer_27 is
+    Port ( clk, J, K : in  STD_LOGIC;
+           Q : out  STD_LOGIC);
+end Exer_27;
 
-architecture Behavioral of Exer_3 is
+architecture Behavioral of Exer_27 is
 
 begin
-	y <= a(3) xor a(2) xor a(1) xor a(0); --implements 4-input xor gate
+
 
 end Behavioral;
 
