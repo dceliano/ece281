@@ -16,24 +16,40 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity Exer_32 is
-    Port ( R, A, B : in  STD_LOGIC;
+    Port ( R, A, B, clk : in  STD_LOGIC;
            Q : out  STD_LOGIC);
 end Exer_32;
 
 architecture Behavioral of Exer_32 is
-
+	type statetype is (S0, S1, S2);
+	signal state, nextstate: statetype;
 begin
-
+	--state register
+	process(clk, r) begin
+		if r = '1' then state <= S0;
+		elsif rising_edge(clk) then
+			state <= nextstate;
+		end if;
+	end process;
+	
+	--next state logic
+	process(a, b) begin
+		case state is
+			when S0 => if a = '1' then nextstate <= S1;
+						  else nextstate <= S0;
+						  end if;
+			when S1 => if b = '1' then nextstate <= S2;
+						  else nextstate <= S0;
+						  end if;
+			when S2 => nextstate <= S0;
+			when others => nextstate <= S0;
+		end case;
+	end process;
+	
+	--output logic
+	q <= '1' when state = S2
+				else '0';
 
 end Behavioral;
 

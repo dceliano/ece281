@@ -14,24 +14,24 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity Exer_9 is
     Port ( a, b, c : in  STD_LOGIC;
            y : out  STD_LOGIC);
 end Exer_9;
 
-architecture Behavioral of Exer_9 is
-
+architecture struct of Exer_9 is
+	component mux8_exer_8
+		port( s : in  STD_LOGIC_VECTOR (2 downto 0);
+           d0, d1, d2, d3, d4, d5, d6, d7
+			    : in   STD_LOGIC;
+           y : out  STD_LOGIC);
+	end component;
+	signal sel: STD_LOGIC_VECTOR(2 downto 0);
 begin
-
-
-end Behavioral;
-
+	sel <= a & b & c; --tie together the inputs to the sel bus
+	
+	mux8: mux8_exer_8 port map(sel, '1', '0', '0', '1',
+										     '1', '1', '0', '0', y); --make an instance of the mux8 with the inputs and outputs
+											  
+end struct;
