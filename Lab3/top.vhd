@@ -1,22 +1,21 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    10:07:25 03/11/2015 
--- Design Name: 
--- Module Name:    top - struct 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+--------------------------------------------------------------------
+-- Name:	Dominic Celiano
+-- Date:	3/17/15
+-- Course:	ECE281
+-- File:	Lab 3 Top
+-- HW: Lab 3
 --
--- Dependencies: 
+-- Purp:	This file contains the VHDL code to implement the top of the Thunderbird FSM.
 --
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
+-- Documentation:	None
 --
-----------------------------------------------------------------------------------
+-- Academic Integrity Statement: I certify that, while others may have 
+-- assisted me in brain storming, debugging and validating this program, 
+-- the program itself is my own work. I understand that submitting code 
+-- which is the work of other individuals is a violation of the honor   
+-- code.  I also understand that if I knowingly give my original work to 
+-- another individual is also a violation of the honor code. 
+-------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
