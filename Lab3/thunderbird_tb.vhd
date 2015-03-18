@@ -76,41 +76,58 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns. - should go into state S0
-      wait for 100 ns;	
+      -- hold reset state for 10 ns. - should go into state S0
+      wait for 10 ns;	
 
-      wait for clk_period*10;
-
-      -- insert stimulus here 
+      -- test cases are below
 		
-		reset <= '0'; left <= '0'; right <= '0'; --should stay in S0
+		--currently in S0
+		reset <= '1'; left <= '0'; right <= '0'; --should stay in S0
 		wait for clk_period;
-		
+		--in S0
 		reset <= '0'; left <= '1'; right <= '0'; --should move into left turn sequence (S0->S1->S2->S3->S0)
 		wait for clk_period;
-		
+		--S1
 		reset <= '0'; left <= '1'; right <= '1'; --should do nothing (b/c still in turn sequence)
 		wait for clk_period;
-		
+		--S2
 		reset <= '0'; left <= '0'; right <= '1'; --should do nothing
 		wait for clk_period;
-		wait for clk_period; --should be in s0
-		
+		--S3
+		wait for clk_period; --should go to S0
+		--S0
 		reset <= '0'; left <= '0'; right <= '1'; --should move into right turn sequence (S0->S4->S5->S6->S0)
 		wait for clk_period;
-		
+		--S4
 		reset <= '0'; left <= '1'; right <= '1'; --should do nothing (b/c still in turn sequence)
 		wait for clk_period;
-		
+		--S5
 		wait for clk_period;
-		wait for clk_period; --back to s0
-		
+		--S6
+		wait for clk_period; --go back to s0
+		--S0
 		reset <= '0'; left <= '1'; right <= '1'; --should move into hazard sequence
 		wait for clk_period;
+		--S7
+		wait for clk_period;
+		--S0
+		wait for clk_period;
+		--S7
+		wait for clk_period; --go back to s0
+		--S0
+		reset <= '0'; left <= '1'; right <= '0'; --should move into left turn sequence (S0->S1->S2->S3->S0)
+		wait for clk_period;
+		--S1
+		reset <= '1'; --puts us back in S0
+		wait for clk_period;
+		--S0
+		reset <= '0'; left <= '0'; right <= '1'; --should move into right turn sequence (S0->S4->S5->S6->S0)
+		wait for clk_period;
+		--S4
+		reset <= '1'; --puts us back in S0
+		wait for clk_period;
+		--S0
 		
-		wait for clk_period; --back to s0
-		
-		--now, test some weird cases (i.e. resets during a sequence)
 		
       wait;
    end process;

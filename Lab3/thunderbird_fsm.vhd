@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity thunderbird_fsm is
     Port ( clk, reset, left, right : in  STD_LOGIC;
-           lights_l, lights_r : out  STD_LOGIC_VECTOR (2 downto 0)); --0 is left-hand light in bus, 2 is right-hand light
+           lights_l, lights_r : out  STD_LOGIC_VECTOR (2 downto 0));
 end thunderbird_fsm;
 
 architecture Behavioral of thunderbird_fsm is
@@ -73,25 +73,24 @@ begin
 						  end if;
 			when S6 => nextstate <= S0;
 			--hazard light sequence
-			when S7 => nextstate <= S2;
+			when S7 => nextstate <= S0;
 			--if we were not in a state for some reason, reset the state to S0
 			when others => nextstate <= S0;
 		end case;
 	end process;
 	
 	--output logic - implements the output logic
-	--note that in a bus from 0 to 2, 0 is left-hand light on taillight, while 2 is right-hand light
-	lights_l(0) <= '1' when(state = S3 or state = S7) -- LC (left-most light) = S3 + S7
+	lights_l(2) <= '1' when(state = S3 or state = S7) -- LC (left-most light) = S3 + S7
 				else '0';
 	lights_l(1) <= '1' when(state = S2 or state = S3 or state = S7) -- LB = S2 + S3+ S7
 				else '0';
-	lights_l(2) <= '1' when(state = S1 or state = S2 or state = S3 or state = S7) -- LA = S1 + S2+ S3 + S7
+	lights_l(0) <= '1' when(state = S1 or state = S2 or state = S3 or state = S7) -- LA = S1 + S2+ S3 + S7
 				else '0';
-	lights_r(0) <= '1' when(state = S4 or state = S5 or state = S6 or state = S7) -- RA = S4 + S5 + S6 + S7
+	lights_r(2) <= '1' when(state = S4 or state = S5 or state = S6 or state = S7) -- RA = S4 + S5 + S6 + S7
 				else '0';
 	lights_r(1) <= '1' when(state = S5 or state = S6 or state = S7) -- RB = S5 + S6 + S7
 				else '0';
-	lights_r(2) <= '1' when(state = S6 or state = S7) -- RC (right-most light) = S6 + S7
+	lights_r(0) <= '1' when(state = S6 or state = S7) -- RC (right-most light) = S6 + S7
 				else '0';
 
 end Behavioral;

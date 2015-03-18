@@ -16,22 +16,19 @@
 #-- code.  I also understand that if I knowingly give my original work to 
 #-- another individual is also a violation of the honor code. 
 #------------------------------------------------------------------------- 
+
+# Clock
+NET "sw<0>" LOC = "B8";
+
 # Leds
-NET "Led0"  LOC = "J14";
-NET "Led1"  LOC = "J15";
-NET "Led2"  LOC = "K15";
-NET "Led3"  LOC = "K14";
-NET "Led4"  LOC = "E17";
-NET "Led5"  LOC = "P15";
-NET "Led6"  LOC = "F4";
-NET "Led7"  LOC = "R4";
+NET "Led<0>"  LOC = "J14"; #left LED
+NET "Led<1>"  LOC = "J15";
+NET "Led<2>"  LOC = "K15";
+NET "Led<3>"  LOC = "K14";
+NET "Led<4>"  LOC = "E17";
+NET "Led<5>"  LOC = "P15"; #right LED
 
 # Switches
-NET "sw0" LOC = "G18";
-NET "sw1" LOC = "H18";
-NET "sw2" LOC = "K18";
-NET "sw3" LOC = "K17";
-NET "sw4" LOC = "L14";
-NET "sw5" LOC = "L13";
-NET "sw6" LOC = "N17";
-NET "sw7" LOC = "R17";
+NET "sw<1>" LOC = "K18"; #left switch
+NET "sw<2>" LOC = "H18";
+NET "sw<3>" LOC = "G18"; #right switch

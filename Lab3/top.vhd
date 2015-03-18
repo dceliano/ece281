@@ -7,7 +7,7 @@
 --
 -- Purp:	This file contains the VHDL code to implement the top of the Thunderbird FSM.
 --
--- Documentation:	None
+-- Documentation:	C3C Lance Torres helped me understand how to structurally put components into the top.vhd file.
 --
 -- Academic Integrity Statement: I certify that, while others may have 
 -- assisted me in brain storming, debugging and validating this program, 
@@ -19,14 +19,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity top is
     Port ( sw : in  STD_LOGIC_VECTOR (3 downto 0); --clk, reset, left, right
@@ -34,9 +26,36 @@ entity top is
 end top;
 
 architecture struct of top is
-
+	signal slowed_clock: STD_LOGIC; --internal signal
+	
+	component thunderbird_fsm is --the inputs and outputs of the thunderbird fsm
+		Port ( clk, reset, left, right : in  STD_LOGIC;
+           lights_l, lights_r : out  STD_LOGIC_VECTOR (2 downto 0)); --0 is left-hand light in bus, 2 is right-hand light
+	end component;
+	
+	component clock_divider is --the inputs and outputs of the clock divider
+		Port(
+			clk_fast : in std_logic;
+			reset    : in std_logic;
+			clk_slow : out std_logic);
+	end component;
+	
+	
 begin
-
+	thundermachine : thunderbird_fsm Port Map( --defines the inputs/outputs going into/out of the thunderbird fsm
+		slowed_clock, --these are the values that will get tied to the inputs of the thunderbird fsm
+		sw(1), --sw(1) is reset
+		sw(2), --sw(2) is left
+		sw(3), --sw(3) is right
+		led(5 downto 3), --these LED's will be on the left
+		led(2 downto 0) --these LED's will be on the right
+	);
+	
+	clockdivider : clock_divider Port Map( --defines the inputs/outputs going into/out of the clock divider
+		sw(0), --sw(0) is clock
+		sw(1), --sw(1) is reset
+		slowed_clock
+	);
 
 end struct;
 
