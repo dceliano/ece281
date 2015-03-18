@@ -1,0 +1,37 @@
+#--------------------------------------------------------------------
+#-- Name:	Dominic Celiano
+#-- Date:	3/17/15
+#-- Course:	ECE281
+#-- File:	ECE281 Lab 3 UCF
+#-- HW:		Lab 3
+#--
+#-- Purp:	Connects the LEDs/switches  to the top level design.
+#--
+#-- Documentation:	None
+#--
+#-- Academic Integrity Statement: I certify that, while others may have 
+#-- assisted me in brain storming, debugging and validating this program, 
+#-- the program itself is my own work. I understand that submitting code 
+#-- which is the work of other individuals is a violation of the honor   
+#-- code.  I also understand that if I knowingly give my original work to 
+#-- another individual is also a violation of the honor code. 
+#------------------------------------------------------------------------- 
+# Leds
+NET "Led0"  LOC = "J14";
+NET "Led1"  LOC = "J15";
+NET "Led2"  LOC = "K15";
+NET "Led3"  LOC = "K14";
+NET "Led4"  LOC = "E17";
+NET "Led5"  LOC = "P15";
+NET "Led6"  LOC = "F4";
+NET "Led7"  LOC = "R4";
+
+# Switches
+NET "sw0" LOC = "G18";
+NET "sw1" LOC = "H18";
+NET "sw2" LOC = "K18";
+NET "sw3" LOC = "K17";
+NET "sw4" LOC = "L14";
+NET "sw5" LOC = "L13";
+NET "sw6" LOC = "N17";
+NET "sw7" LOC = "R17";

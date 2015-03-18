@@ -29,8 +29,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity top is
-    Port ( sw : in  STD_LOGIC_VECTOR (3 downto 0);
-           led : out  STD_LOGIC_VECTOR (5 downto 0));
+    Port ( sw : in  STD_LOGIC_VECTOR (3 downto 0); --clk, reset, left, right
+           led : out  STD_LOGIC_VECTOR (5 downto 0)); --taillights
 end top;
 
 architecture struct of top is

@@ -34,35 +34,37 @@ entity thunderbird_fsm is
 end thunderbird_fsm;
 
 architecture Behavioral of thunderbird_fsm is
-	type statetype is (S0, S1, S2, S3, S4, S5, S6, S7);
-	signal state, nextstate: statetype;
+	type statetype is (S0, S1, S2, S3, S4, S5, S6, S7); --one for each state
+	signal state, nextstate: statetype; --state and next state can be any of the 8 states in the line above
 begin
 	--state register
-	process(clk, reset) begin
+	process(clk, reset) begin --only occurs when clk or reset changes
 		if reset = '1' then state <= S0;
-		elsif rising_edge(clk) then
+		elsif rising_edge(clk) then --output and state changes on rising edge
 			state <= nextstate;
 		end if;
 	end process;
 	
 	--next state logic
-	process(left, right) begin
+	process(left, right) begin --only occurs when left or right changes
 		case state is
 			when S0 => if (left = '1' and right = '0' and reset = '0') 
-								then nextstate <= S1;
+								then nextstate <= S1; --entering left turn sequence
 						  elsif (left = '0' and right = '1' and reset = '0')
-								then nextstate <= S4;
+								then nextstate <= S4; --entering right turn sequence
 						  elsif (left = '1' and right = '1' and reset = '0')
-								then nextstate <= S7;
-						  else nextstate <= S0;
+								then nextstate <= S7; --entering hazard lights sequence
+						  else nextstate <= S0; --always default to S0 if conditions to leave S0 (or another state) are not met
 						  end if;
-			when S1 => if reset = '0' then nextstate <= S2;
+			--left turn sequence below
+			when S1 => if reset = '0' then nextstate <= S2; --occurs no matter what, unless the reset button is pressed
 						  else nextstate <= S0;
 						  end if;
 			when S2 => if reset = '0' then nextstate <= S3;
 						  else nextstate <= S0;
 						  end if;
 			when S3 => nextstate <= S0;
+			--right turn sequence below
 			when S4 => if reset = '0' then nextstate <= S5;
 						  else nextstate <= S0;
 						  end if;
@@ -70,12 +72,15 @@ begin
 						  else nextstate <= S0;
 						  end if;
 			when S6 => nextstate <= S0;
+			--hazard light sequence
 			when S7 => nextstate <= S2;
+			--if we were not in a state for some reason, reset the state to S0
 			when others => nextstate <= S0;
 		end case;
 	end process;
 	
-	--output logic
+	--output logic - implements the output logic
+	--note that in a bus from 0 to 2, 0 is left-hand light on taillight, while 2 is right-hand light
 	lights_l(0) <= '1' when(state = S3 or state = S7) -- LC (left-most light) = S3 + S7
 				else '0';
 	lights_l(1) <= '1' when(state = S2 or state = S3 or state = S7) -- LB = S2 + S3+ S7
