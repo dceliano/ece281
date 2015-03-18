@@ -7,7 +7,7 @@
 --
 -- Purp:	This file contains the VHDL code to implement the Thunderbird FSM blinker lights.
 --
--- Documentation:	None
+-- Documentation:	C3C Lance Torres helped me realize that I need process(left, right, clk, reset) instead of just process(left, right)
 --
 -- Academic Integrity Statement: I certify that, while others may have 
 -- assisted me in brain storming, debugging and validating this program, 
@@ -46,7 +46,7 @@ begin
 	end process;
 	
 	--next state logic
-	process(left, right) begin --only occurs when left or right changes
+	process(left, right, clk, reset) begin
 		case state is
 			when S0 => if (left = '1' and right = '0' and reset = '0') 
 								then nextstate <= S1; --entering left turn sequence

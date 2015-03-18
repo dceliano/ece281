@@ -5,9 +5,9 @@
 -- File:	Lab 3 Thunderbird Testbench
 -- HW: Lab 3
 --
--- Purp:	This file contains the test cases to ensure that the Thunderbird FSM works correctly.
+-- Purp:	This file contains the VHDL code to test the thunderbird lights and ensure they work correctly.
 --
--- Documentation:	C3C Lance Torres helped me debug some problems I was having with my testbench simulation.
+-- Documentation:	C3C Lance Torres helped me figure out why my tb wasn't working (see fsm doc. statement)
 --
 -- Academic Integrity Statement: I certify that, while others may have 
 -- assisted me in brain storming, debugging and validating this program, 
@@ -18,6 +18,10 @@
 -------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
  
 ENTITY thunderbird_tb IS
 END thunderbird_tb;
@@ -76,13 +80,12 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns. - should go into state S0
-		reset <= '1';
+      -- hold reset state for 100 ns.
       wait for 100 ns;	
-		
-		wait for clk_period*10;
 
-      -- test cases are below
+      wait for clk_period*10;
+
+      -- insert stimulus here 
 		
 		--currently in S0
 		reset <= '1'; --should stay in S0
@@ -127,8 +130,8 @@ BEGIN
 		reset <= '1'; --puts us back in S0
 		wait for clk_period;
 		--S0
-		
+
       wait;
-   end process;
+		end process;
 
 END;
