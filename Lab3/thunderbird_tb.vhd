@@ -7,7 +7,7 @@
 --
 -- Purp:	This file contains the test cases to ensure that the Thunderbird FSM works correctly.
 --
--- Documentation:	None
+-- Documentation:	C3C Lance Torres helped me debug some problems I was having with my testbench simulation.
 --
 -- Academic Integrity Statement: I certify that, while others may have 
 -- assisted me in brain storming, debugging and validating this program, 
@@ -76,22 +76,23 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 10 ns. - should go into state S0
-      wait for 10 ns;	
+      -- hold reset state for 100 ns. - should go into state S0
+		reset <= '1';
+      wait for 100 ns;	
+		
+		wait for clk_period*10;
 
       -- test cases are below
 		
 		--currently in S0
-		reset <= '1'; left <= '0'; right <= '0'; --should stay in S0
+		reset <= '1'; --should stay in S0
 		wait for clk_period;
 		--in S0
 		reset <= '0'; left <= '1'; right <= '0'; --should move into left turn sequence (S0->S1->S2->S3->S0)
 		wait for clk_period;
 		--S1
-		reset <= '0'; left <= '1'; right <= '1'; --should do nothing (b/c still in turn sequence)
 		wait for clk_period;
 		--S2
-		reset <= '0'; left <= '0'; right <= '1'; --should do nothing
 		wait for clk_period;
 		--S3
 		wait for clk_period; --should go to S0
@@ -99,7 +100,6 @@ BEGIN
 		reset <= '0'; left <= '0'; right <= '1'; --should move into right turn sequence (S0->S4->S5->S6->S0)
 		wait for clk_period;
 		--S4
-		reset <= '0'; left <= '1'; right <= '1'; --should do nothing (b/c still in turn sequence)
 		wait for clk_period;
 		--S5
 		wait for clk_period;
@@ -127,7 +127,6 @@ BEGIN
 		reset <= '1'; --puts us back in S0
 		wait for clk_period;
 		--S0
-		
 		
       wait;
    end process;

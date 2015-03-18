@@ -34,28 +34,46 @@ After the next state table and equations were worked out, it was time to move on
 ######FIGURE 7 - output equations for the thunderbird fsm, determined using the table in figure 6. these equations were extremely helpful when the vhdl code was written.
 After the next state and output logic was determined to help write the VHDL code, it was finally time to dive into the VHDL code. The FSM had 4 inputs: left, right, reset, and the clock and 6 outputs: the 6 LEDs. The output was split up into 2 busses of 3 LEDs, with each bus representing the left or right taillight. The first thing that was necessary to do was to define the 8 state types that were possible: S0-S7. Once that was done, the signals 'state' and 'nextstate' were defined to be of type statetype. This let these signals take on the values of S0-S7. This code can be seen in Figure 8.
 
-![Type and Signal](lab3pics/)
-######FIGURE 8 - 
+![Type and Signal](lab3pics/signal_code.JPG)
+######FIGURE 8 - the 8 different statetypes as well as defining the state and nextstate signals as types of those statetypes.
 After the state and nextstate signals were defined, it was time to move into the state register part of the VHDL code. A process was created that only ran when clk or reset changed, and changed the state to next state on the rising edge of the clock. 
 
 After the state register part of the VHDL code was written, the next state logic portion of the code was written. This was where the next state table and equations from Figures 4 and 5 came in handy. Using those tables and a case statement, I was able to say that when we were in a current state and the inputs were certain values, we should move to a certain new state. This case statement was inside of a process that was only run when the left or right inputs changed. An example of the code can be seen in Figure 9.
 
-![Example Next State Code](lab3pics/)
-######FIGURE 9 - 
-Since the next state logic was now implemented into VHDL, it was time to move onto the output logic. To make writing this code a lot easier, the output table and equations from Figures 6 and 7 were used. Each of the 3 outputs on the left and right busses were set to match the logic equations from Figure 7. One slight nuance that I decided to implement, however, was that lights_l(0) would correspond to LC in Figure 2, while lights_r(0) would correspond to RA in Figure 2. This way of implementing the logic was easier to work with in my mind. An example of the output equations in VHDL code can be seen in Figure 10.
+![Example Next State Code](lab3pics/next_state_code.JPG)
+######FIGURE 9 - an example of next state code - this code shows all the next states based on the inputs if we start out in state s0.
+Since the next state logic was now implemented into VHDL, it was time to move onto the output logic. To make writing this code a lot easier, the output table and equations from Figures 6 and 7 were used. Each of the 3 outputs on the left and right busses were set to match the logic equations from Figure 7. An example of the output code can be seen in Figure 10.
 
-![Example Output Code](lab3pics/)
-######FIGURE 10 - 
-Now that the VHDL code for the Thunderbird FSM was written, I ensured that it was working correctly (seen below in next section).
+![Example Output Code](lab3pics/output_code.JPG)
+######FIGURE 10 - example output code for the thunderbird fsm. This code shows in which states the 2nd light of the left bus will be enabled/turned on.
+Now that the VHDL code for the Thunderbird FSM was written, I ensured that it was working correctly. These tests can be seen below in the next section.
 
 I then moved onto writing my top.vhd file. Before I did this, I grabbed the clock_divider.vhd file from the ECE281 course website. This file was necessary to slow down the 50MHz clock of the Nexys2 board into something slower that can be seen by the human eye. This way, I could actually see the lights on the FPGA functioning.
 
+The top.vhd file used a structural architecture that used the two components of the clock divider and the thunderbird FSM to create a top level design with 4 inputs and 6 outputs (the LEDs). Other than defining these two components a signal that was internal to the system also needed to be defined. This signal would take the output of the clock_divider, the slowed clock signal, and input it into the thunderbird FSM so the lights of the thunderbird would be visibly updated. The components and signals can be seen in Figure 11.
+
+![Components and Signals](lab3pics/components.JPG)
+######FIGURE 11 - the components and signals that make up the top.vhd structural architecture. the inputs and outputs of each component can be seen.
+The next step was then to do the port map for each of the components. The purpose of the port maps was to define the inputs and outputs going into or out of each 'box' in accords with the top level design. For example, the thunderbird FSM was assigned inputs of the slowed clock and the three other switches, while its outputs were the 5 LEDs. The inputs to the clock divider, on the other hand, were the fast clock and the reset. Its output was the slowed clock, the signal which was fed into the thunderbird FSM to make the light visible.
+
+After the top.vhd file had successfully implemented the thunderbird FSM with a slowed clock using the clock_divider.vhd file, it was time to think about moving the FSM into hardware. To do this, a .ucf file was written to tie the inputs to switches and the clock and the outputs to LEDs. 6 LEDs were used, 1 input was the 50MHz clock of the Nexys2, and 3 switches were used as the reset, left, and right inputs. The hardware was then tested on the FPGA to make sure the LED's blinked correctly.
+
 ## Testing procedures and data collected
+Testbenches for thunderbird fsm...
+
+Testing it in hardware was a fairly easy task. A .bit file was generated from the top.vhd file, and was uploaded to the Nexys2 board using the Digilent Adept software. All possible test cases were then tested - similar to what was done with the testbench file. See the Youtube video below for a video with explanations of what is happening.
+Link: https://www.youtube.com/watch?v=w94CGdJfoDA&feature=youtu.be
 
 ## Debugging discussion
+One of the main problems I faced in this lab was getting my Thunderbird FSM Testbench to work properly.
 
 ## Answers to Lab Questions
+None.
 
 ## Observations and Conclusions
+This lab was a good follow-up to the last lab. Instead of having to figure out an encoding scheme for the FSM and draw out all of the schematics, it was much easier and quicker to just write the VHDL code. While we just started learning VHDL a few lessons ago, jumping into it with a lab like this one was a good learning experience. Being able to do something cool like simulating the lights of a 1965 Thunderbird was also really cool.
+
+One thing I especially learned through doing this lab is that it is extremely important to keep track of your busses and LED's and how they are linked to each other. It is pretty easy to get confused on what LED is corresponding to what output, and therefore it is necessary to really pay attention to what is going on. Overall, however, this lab truly was a good learning experience and a good follow-up to a VHDL intro.
 
 ## Documentation statement
+C3C Lance Torres helped me understand how to implement the structural architecture of the top.vhd file as well as debug my thunderbird testbench.
