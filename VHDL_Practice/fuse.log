@@ -1,0 +1,25 @@
+Running: G:\Xilinx\14.1\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb_isim_beh.exe -prj C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb_beh.prj work.Lsn20_tb 
+ISim P.15xf (signature 0xc3576ebc)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 66: Illegal identifier : _period
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 81: Illegal identifier : _process
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 84: Illegal identifier : _period
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 86: Illegal identifier : _period
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 96: Illegal identifier : _period
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20.vhd" into library work
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" into library work
+ERROR:HDLCompiler:806 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 66: Syntax error near "<".
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 66: Illegal identifier : _period
+ERROR:HDLCompiler:806 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 81: Syntax error near "<".
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 81: Illegal identifier : _process
+ERROR:HDLCompiler:806 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 83: Syntax error near "<".
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 84: Illegal identifier : _period
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 86: Illegal identifier : _period
+WARNING:HDLCompiler:1369 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 81: Possible infinite loop; process does not have a wait statement
+ERROR:HDLCompiler:806 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 96: Syntax error near "<".
+ERROR:HDLCompiler:488 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 96: Illegal identifier : _period
+WARNING:HDLCompiler:1369 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 91: Possible infinite loop; process does not have a wait statement
+ERROR:HDLCompiler:854 - "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd" Line 38: Unit <behavior> ignored due to previous errors.
+VHDL file C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/Lsn20_tb.vhd ignored due to errors

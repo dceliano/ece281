@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/VHDL_Practice/xst"
+elaborate
+-ifn Lsn20.prj
+-ifmt mixed
