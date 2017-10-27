@@ -1,0 +1,5 @@
+MODULE ECE281_Celiano_Lab1_Top
+	SUBMODULE ECE281_Lab1_Celiano_sseg_decoder
+		INSTANCE XLXI_1
+	SUBMODULE ECE281_Celiano_Lab1_display_en
+		INSTANCE XLXI_4

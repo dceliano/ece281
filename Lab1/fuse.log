@@ -1,0 +1,39 @@
+Running: G:\Xilinx\14.1\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Celiano_Lab1_Top_ECE281_Celiano_Lab1_Top_sch_tb_isim_beh.exe -prj C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Celiano_Lab1_Top_ECE281_Celiano_Lab1_Top_sch_tb_beh.prj work.ECE281_Celiano_Lab1_Top_ECE281_Celiano_Lab1_Top_sch_tb 
+ISim P.15xf (signature 0xc3576ebc)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Lab1_Celiano_sseg_decoder.vhf" into library work
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Celiano_Lab1_display_en.vhf" into library work
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Celiano_Lab1_Top.vhf" into library work
+Parsing VHDL file "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Lab1_Celiano_tb.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package vcomponents
+Compiling package textio
+Compiling package vital_timing
+Compiling package vital_primitives
+Compiling package vpkg
+Compiling architecture lut4_v of entity LUT4 [\LUT4("0011100000010010")(0,15)\]
+Compiling architecture and5b3_v of entity AND5B3 [and5b3_default]
+Compiling architecture and5b2_v of entity AND5B2 [and5b2_default]
+Compiling architecture and5b1_v of entity AND5B1 [and5b1_default]
+Compiling architecture and5_v of entity AND5 [and5_default]
+Compiling architecture and5b4_v of entity AND5B4 [and5b4_default]
+Compiling architecture behavioral of entity D4_16E_MXILINX_ECE281_Celiano_Lab1_Top [d4_16e_mxilinx_ece281_celiano_la...]
+Compiling architecture or3_v of entity OR3 [or3_default]
+Compiling architecture vcc_v of entity VCC [vcc_default]
+Compiling architecture behavioral of entity ECE281_Lab1_Celiano_sseg_decoder_MUSER_ECE281_Celiano_Lab1_Top [ece281_lab1_celiano_sseg_decoder...]
+Compiling architecture inv_v of entity INV [inv_default]
+Compiling architecture behavioral of entity ECE281_Celiano_Lab1_display_en_MUSER_ECE281_Celiano_Lab1_Top [ece281_celiano_lab1_display_en_m...]
+Compiling architecture behavioral of entity ECE281_Celiano_Lab1_Top [ece281_celiano_lab1_top_default]
+Compiling architecture behavioral of entity ece281_celiano_lab1_top_ece281_c...
+Time Resolution for simulation is 1ps.
+Waiting for 13 sub-compilation(s) to finish...
+Compiled 45 VHDL Units
+Built simulation executable C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab1/ECE281_Celiano_Lab1_Top_ECE281_Celiano_Lab1_Top_sch_tb_isim_beh.exe
+Fuse Memory Usage: 54156 KB
+Fuse CPU Usage: 2152 ms

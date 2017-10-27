@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\C17Dominic.Celiano\Documents\Cadet Life\Academics\ECE 281\myGitLab\Lab3\top.ncd
+OUTFILE=C:\Users\C17Dominic.Celiano\Documents\Cadet Life\Academics\ECE 281\myGitLab\Lab3\top.bit
+FAMILY=Spartan3E
+PART=xc3s500e-4fg320
+WORKINGDIR=C:\Users\C17Dominic.Celiano\Documents\Cadet Life\Academics\ECE 281\myGitLab\Lab3
+LICENSE=WebPack
+USER_INFO=210985676_0_0_010

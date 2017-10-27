@@ -1,0 +1,5 @@
+vhdl work "ECE281Celiano_Lab2_room.vhf"
+vhdl work "ECE281_Celiano_Lab2_Room_tb.vhd"
+vhdl work "ECE281Celiano_Lab2_room_fsm.vhf"
+vhdl work "ECE281_Celiano_Lab2_sword.vhf"
+vhdl work "ECE281_Celiano_Lab2_sword_fsm.vhf"

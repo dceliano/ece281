@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab3/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/Lab3/xst"
+elaborate
+-ifn thunderbird_fsm.prj
+-ifmt mixed

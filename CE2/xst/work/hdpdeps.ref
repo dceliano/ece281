@@ -1,0 +1,26 @@
+V3 12
+FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_HA.vhf" 2015/01/22.20:14:45 P.15xf
+EN work/ECE281_CPX2_Celiano_HA 1421984582 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_HA.vhf" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/NUMERIC_STD 1335251627 LB UNISIM \
+      PH unisim/VCOMPONENTS 1335251629
+AR work/ECE281_CPX2_Celiano_HA/BEHAVIORAL 1421984583 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_HA.vhf" \
+      EN work/ECE281_CPX2_Celiano_HA 1421984582 CP AND2 CP XOR2
+FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_Top.vhf" 2015/01/22.20:42:50 P.15xf
+EN work/ECE281_CPX2_Celiano_HA_MUSER_ECE281_CPX2_Celiano_Top 1421984578 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_Top.vhf" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/NUMERIC_STD 1335251627 LB UNISIM \
+      PH unisim/VCOMPONENTS 1335251629
+AR work/ECE281_CPX2_Celiano_HA_MUSER_ECE281_CPX2_Celiano_Top/BEHAVIORAL 1421984579 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_Top.vhf" \
+      EN work/ECE281_CPX2_Celiano_HA_MUSER_ECE281_CPX2_Celiano_Top 1421984578 \
+      CP AND2 CP XOR2
+EN work/ECE281_CPX2_Celiano_Top 1421984580 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_Top.vhf" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/NUMERIC_STD 1335251627 LB UNISIM \
+      PH unisim/VCOMPONENTS 1335251629
+AR work/ECE281_CPX2_Celiano_Top/BEHAVIORAL 1421984581 \
+      FL "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/CE2/ECE281_CPX2_Celiano/ECE281_CPX2_Celiano_Top.vhf" \
+      EN work/ECE281_CPX2_Celiano_Top 1421984580 \
+      CP ECE281_CPX2_Celiano_HA_MUSER_ECE281_CPX2_Celiano_Top

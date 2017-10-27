@@ -1,0 +1,29 @@
+Command line:
+   ECE281_Celiano_Lab1_Top_ECE281_Celiano_Lab1_Top_sch_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  61912
+
+Sun Feb 01 20:58:26 2015
+
+
+ Elaboration Time: 0.0936 sec
+
+ Current Memory Usage: 505.774 Meg
+
+ Total Signals          : 246
+ Total Nets             : 61
+ Total Signal Drivers   : 36
+ Total Blocks           : 40
+ Total Primitive Blocks : 35
+ Total Processes        : 29
+ Total Traceable Variables  : 137
+ Total Scalar Nets and Variables : 4970
+Total Line Count : 111
+
+ Total Simulation Time: 0.0936 sec
+
+ Current Memory Usage: 505.774 Meg
+
+Sun Feb 01 21:02:52 2015
+

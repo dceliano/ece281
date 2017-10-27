@@ -1,0 +1,2 @@
+vhdl isim_temp "ECE281Celiano_Lab2_room_fsm.vhf"
+vhdl isim_temp "ECE281_Celiano_Lab2_RoomFSM_tb.vhd"
