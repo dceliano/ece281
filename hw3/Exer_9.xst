@@ -1,5 +1,0 @@
-set -tmpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/HW_3/xst/projnav.tmp"
-set -xsthdpdir "C:/Users/C17Dominic.Celiano/Documents/Cadet Life/Academics/ECE 281/myGitLab/HW_3/xst"
-elaborate
--ifn Exer_9.prj
--ifmt mixed
