@@ -1,7 +1,0 @@
-vhdl isim_temp "ECE281_Celi_Lab2_sword.vhf"
-vhdl isim_temp "ECE281Celiano_Lab2_room.vhf"
-vhdl isim_temp "ECE281_Celiano_Lab2_Top.vhf"
-vhdl isim_temp "ECE281_Celiano_Lab2_Top_tb.vhd"
-vhdl isim_temp "ECE281Celiano_Lab2_room_fsm.vhf"
-vhdl isim_temp "ECE281_Celiano_Lab2_sword.vhf"
-vhdl isim_temp "ECE281_Celiano_Lab2_sword_fsm.vhf"
